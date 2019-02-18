@@ -1,6 +1,12 @@
-<h1>Editing Order</h1>
 
-<%= render 'form', order: @order %>
+<div class="row my-row">
+  <div class='col-sm-12 my-container'> 
+    <h1>Editing Order</h1>
 
-<%= link_to 'Show', @order %> |
-<%= link_to 'Back', orders_path %>
+    <%= render 'form', order: @order %>
+
+    <%= link_to 'Show', @order %> |
+    <%= link_to 'Back', orders_path %>
+    
+  </div>
+</div>

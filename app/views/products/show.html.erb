@@ -1,24 +1,30 @@
-<p id="notice"><%= notice %></p>
 
-<p>
-  <strong>Name:</strong>
-  <%= @product.name %>
-</p>
 
-<p>
-  <strong>Description:</strong>
-  <%= @product.description %>
-</p>
+<div class="row my-row">
+  <div class='col-sm-12 my-container'> 
+    <p id="notice"><%= notice %></p>
 
-<p>
-  <strong>Category:</strong>
-  <%= @product.category %>
-</p>
+    <p>
+      <strong>Name:</strong>
+      <%= @product.name %>
+    </p>
 
-<p>
-  <strong>Stock:</strong>
-  <%= @product.stock %>
-</p>
+    <p>
+      <strong>Description:</strong>
+      <%= @product.description %>
+    </p>
 
-<%= link_to 'Edit', edit_product_path(@product) %> |
-<%= link_to 'Back', products_path %>
+    <p>
+      <strong>Category:</strong>
+      <%= @product.category %>
+    </p>
+
+    <p>
+      <strong>Stock:</strong>
+      <%= @product.stock %>
+    </p>
+
+    <%= link_to 'Edit', edit_product_path(@product) %> |
+    <%= link_to 'Back', products_path %>    
+  </div>
+</div>

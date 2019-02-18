@@ -93,6 +93,17 @@ html{
 .content{
   margin-left: 300px;
   background-color: $background-color;
+
+  .my-row{
+    .my-container{
+      margin: 10px 0px;
+      padding: 20px !important;
+      background-color: white !important;
+      box-shadow: 0 0 2px gray;
+      overflow: auto;
+    }
+  }
+  
 }
 
 @media screen and (max-width: 600px) {
@@ -106,18 +117,35 @@ html{
 }
 
 table{
+  width: 100%;
+  border: 1px solid rgb(192, 192, 192);
   thead{
     th{
       text-align: center;
       padding: 5px;
       padding-left: 1em;
       padding-right: 1em;
-      border: 1px solid rgb(231, 231, 231);
+      border: 1px solid rgb(192, 192, 192);
+      &:focus{
+        background-color: $primary-color;
+        color: white;
+        outline: none;
+      }
     }
   }
   tr{
     td{
-
+      padding: 10px;
+      padding-left: 1%;
+      border-bottom: 1px solid rgb(216, 216, 216);
+      a{
+        color: $primary-color !important;
+      }
+      
     }
   }
+}
+
+.number-align{
+  text-align: center;
 }

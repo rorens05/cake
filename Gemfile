@@ -51,6 +51,10 @@ gem 'geocoder', '~> 1.5', '>= 1.5.1'
 gem 'devise'
 gem 'cloudinary', require: false
 gem 'activestorage-cloudinary-service'
+gem "chartkick"
+gem 'groupdate'
+gem 'faker'
+gem 'jquery-tablesorter'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console

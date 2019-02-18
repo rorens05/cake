@@ -1,2 +1,50 @@
-<h1>Dashboard#index</h1>
-<p>Find me in app/views/dashboard/index.html.erb</p>
+<div class="row my-row">
+  <div class='col-sm-4'> 
+    <div class="my-container">
+      <h3>Number of Customers</h3><hr>
+      <h1 class="text-info"><%= Customer.count %></h1>
+    </div>
+  </div>
+  <div class='col-sm-4'> 
+    <div class="my-container">
+      <h3>Number of Cakes</h3><hr>
+      <h1 class="text-info"><%= Product.count %></h1>
+    </div>
+  </div>
+  <div class='col-sm-4'> 
+    <div class="my-container">
+      <h3>Number of Orders</h3><hr>
+      <h1 class="text-info"><%= Order.count %></h1>
+    </div>
+  </div>
+</div>
+
+<div class="row my-row">
+  <div class='col-sm-12'> 
+    <div class=" my-container">
+      <h3>Customer per month</h3><hr>
+      <%= line_chart Customer.group_by_month(:created_at).count, colors: ["#ff6666"]  %>
+    </div>
+  </div>
+</div>
+
+<div class="row my-row">
+  <div class='col-sm-6'> 
+    <div class="my-container">
+      <h3>Cakes per Categories</h3><hr>
+      <% temp = {}%>
+      <% Category.all.each do |category| %>
+        <% temp[category.name] = category.products.count %>
+      <% end %>
+      <%= pie_chart temp %>
+    </div>
+  </div>
+  <div class='col-sm-6'> 
+    <div class="my-container">
+      <h3>Sold Cake</h3><hr>
+      <% temp = {}%>
+
+      <%= column_chart Order.group_by_month(:ordered_at, format: "%b %Y").count, colors: ["#ff6666"] %>
+    </div>
+  </div>
+</div>

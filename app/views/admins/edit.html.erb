@@ -1,6 +1,11 @@
-<h1>Editing Admin</h1>
 
-<%= render 'form', admin: @admin %>
+<div class="row my-row">
+  <div class='col-sm-12 my-container'> 
+    <h3>Editing Admin</h3><hr>
 
-<%= link_to 'Show', @admin %> |
-<%= link_to 'Back', admins_path %>
+    <%= render 'form', admin: @admin %>
+
+    <%= link_to 'Show', @admin %> |
+    <%= link_to 'Back', admins_path %>
+  </div>
+</div>

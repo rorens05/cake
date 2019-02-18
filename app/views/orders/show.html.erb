@@ -1,49 +1,56 @@
-<p id="notice"><%= notice %></p>
 
-<p>
-  <strong>Ordered at:</strong>
-  <%= @order.ordered_at %>
-</p>
 
-<p>
-  <strong>Customer:</strong>
-  <%= @order.customer %>
-</p>
+<div class="row my-row">
+  <div class='col-sm-12 my-container'> 
+    <p id="notice"><%= notice %></p>
 
-<p>
-  <strong>Product:</strong>
-  <%= @order.product %>
-</p>
+    <p>
+      <strong>Ordered at:</strong>
+      <%= @order.ordered_at %>
+    </p>
 
-<p>
-  <strong>Size:</strong>
-  <%= @order.size %>
-</p>
+    <p>
+      <strong>Customer:</strong>
+      <%= @order.customer %>
+    </p>
 
-<p>
-  <strong>No of items:</strong>
-  <%= @order.no_of_items %>
-</p>
+    <p>
+      <strong>Product:</strong>
+      <%= @order.product %>
+    </p>
 
-<p>
-  <strong>Payment method:</strong>
-  <%= @order.payment_method %>
-</p>
+    <p>
+      <strong>Size:</strong>
+      <%= @order.size %>
+    </p>
 
-<p>
-  <strong>Status:</strong>
-  <%= @order.status %>
-</p>
+    <p>
+      <strong>No of items:</strong>
+      <%= @order.no_of_items %>
+    </p>
 
-<p>
-  <strong>Delivery location:</strong>
-  <%= @order.delivery_location %>
-</p>
+    <p>
+      <strong>Payment method:</strong>
+      <%= @order.payment_method %>
+    </p>
 
-<p>
-  <strong>Delivered at:</strong>
-  <%= @order.delivered_at %>
-</p>
+    <p>
+      <strong>Status:</strong>
+      <%= @order.status %>
+    </p>
 
-<%= link_to 'Edit', edit_order_path(@order) %> |
-<%= link_to 'Back', orders_path %>
+    <p>
+      <strong>Delivery location:</strong>
+      <%= @order.delivery_location %>
+    </p>
+
+    <p>
+      <strong>Delivered at:</strong>
+      <%= @order.delivered_at %>
+    </p>
+
+    <%= link_to 'Edit', edit_order_path(@order) %> |
+    <%= link_to 'Back', orders_path %>    
+    
+  </div>
+</div>

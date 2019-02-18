@@ -1,33 +1,40 @@
-<p id="notice"><%= notice %></p>
 
-<h1>Products</h1>
 
-<table>
-  <thead>
-    <tr>
-      <th>Name</th>
-      <th>Description</th>
-      <th>Category</th>
-      <th>Stock</th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
+<div class="row my-row">
+  <div class='col-sm-12 my-container'> 
+    <p id="notice"><%= notice %></p>
 
-  <tbody>
-    <% @products.each do |product| %>
-      <tr>
-        <td><%= product.name %></td>
-        <td><%= product.description %></td>
-        <td><%= product.category %></td>
-        <td><%= product.stock %></td>
-        <td><%= link_to 'Show', product %></td>
-        <td><%= link_to 'Edit', edit_product_path(product) %></td>
-        <td><%= link_to 'Destroy', product, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
+    <h1>Products</h1>
 
-<br>
+    <table id="myTable" class="tablesorter">
+      <thead>
+        <tr>
+          <th>Name</th>
+          <th>Category</th>
+          <th>Prices</th>
+          <th>Stock</th>
+          <th colspan="3"></th>
+        </tr>
+      </thead>
 
-<%= link_to 'New Product', new_product_path %>
+      <tbody>
+        <% @products.each do |product| %>
+          <tr>
+            <td><%= product.name %></td>
+            <td class="number-align"><%= product.category.name %></td>
+            <td class="number-align"><%=    %></td>
+            <td class="number-align"><%= product.stock %></td>
+            <td><%= link_to 'Show', product %></td>
+            <td><%= link_to 'Edit', edit_product_path(product) %></td>
+            <td><%= link_to 'Destroy', product, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+
+    <br>
+
+    <%= link_to 'New Product', new_product_path %>    
+    
+  </div>
+</div>

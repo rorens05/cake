@@ -1,24 +1,30 @@
-<p id="notice"><%= notice %></p>
 
-<p>
-  <strong>Name:</strong>
-  <%= @admin.name %>
-</p>
+<div class="row my-row">
+  <div class='col-sm-12 my-container'> 
+    <p id="notice"><%= notice %></p>
 
-<p>
-  <strong>Username:</strong>
-  <%= @admin.username %>
-</p>
+    <p>
+      <strong>Name:</strong>
+      <%= @admin.name %>
+    </p>
 
-<p>
-  <strong>Email:</strong>
-  <%= @admin.email %>
-</p>
+    <p>
+      <strong>Username:</strong>
+      <%= @admin.username %>
+    </p>
 
-<p>
-  <strong>Password:</strong>
-  <%= @admin.password %>
-</p>
+    <p>
+      <strong>Email:</strong>
+      <%= @admin.email %>
+    </p>
 
-<%= link_to 'Edit', edit_admin_path(@admin) %> |
-<%= link_to 'Back', admins_path %>
+    <p>
+      <strong>Password:</strong>
+      <%= @admin.password %>
+    </p>
+
+    <%= link_to 'Edit', edit_admin_path(@admin) %> |
+    <%= link_to 'Back', admins_path %>
+  
+  </div>
+</div>

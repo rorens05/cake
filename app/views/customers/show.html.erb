@@ -1,34 +1,42 @@
-<p id="notice"><%= notice %></p>
 
-<p>
-  <strong>Name:</strong>
-  <%= @customer.name %>
-</p>
+<div class="row my-row">
+  <div class='col-sm-12 my-container'> 
+        
+    <p id="notice"><%= notice %></p>
 
-<p>
-  <strong>Address:</strong>
-  <%= @customer.address %>
-</p>
+    <p>
+      <strong>Name:</strong>
+      <%= @customer.name %>
+    </p>
 
-<p>
-  <strong>Contact no:</strong>
-  <%= @customer.contact_no %>
-</p>
+    <p>
+      <strong>Address:</strong>
+      <%= @customer.address %>
+    </p>
 
-<p>
-  <strong>Email:</strong>
-  <%= @customer.email %>
-</p>
+    <p>
+      <strong>Contact no:</strong>
+      <%= @customer.contact_no %>
+    </p>
 
-<p>
-  <strong>Gender:</strong>
-  <%= @customer.gender %>
-</p>
+    <p>
+      <strong>Email:</strong>
+      <%= @customer.email %>
+    </p>
 
-<p>
-  <strong>Status:</strong>
-  <%= @customer.status %>
-</p>
+    <p>
+      <strong>Gender:</strong>
+      <%= @customer.gender %>
+    </p>
 
-<%= link_to 'Edit', edit_customer_path(@customer) %> |
-<%= link_to 'Back', customers_path %>
+    <p>
+      <strong>Status:</strong>
+      <%= @customer.status %>
+    </p>
+
+    <%= link_to 'Edit', edit_customer_path(@customer) %> |
+    <%= link_to 'Back', customers_path %>
+
+    
+  </div>
+</div>
