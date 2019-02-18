@@ -1,0 +1,123 @@
+$primary-color : #ff6666;
+$outline-btn : rgb(151, 151, 151);
+$secondary-color : #eedddd	;
+$background-color : rgb(226, 226, 226);
+
+html{
+  background-color: $background-color;
+}
+
+.toggle-btn{
+  background-color: #ffffff00;
+  border: 1px solid $outline-btn;
+  z-index: 2;
+  color: $outline-btn;
+  font-size: xx-large;
+  width: 50px;
+  height: 40px;
+  margin: 10px;
+  &:hover{
+    color: rgb(170, 170, 170);
+    border: 1px solid rgb(201, 201, 201);
+    background-color: #ff080800;
+  }
+  &:focus{
+    outline: none;
+  }
+}
+
+.sidebar{
+  width: 300px;
+  height: 100%;
+  position: fixed;
+  overflow: auto;
+  background-color: #ddaaaa	;
+  img{
+    width: 200px;
+    height: 200px;
+    display: block;
+    border-radius: 50%;
+    margin: 50px auto;
+  }
+  ul{
+    padding: 0 !important;
+
+    li{
+      list-style-type: none;
+      margin:0;
+      a{
+        width: 100%;
+        display: block;
+        height: 50px;
+        padding-top: 15px;
+        color: rgb(66, 66, 66);
+        font-size: large;
+        &:hover{
+          background-color: $primary-color;
+          color: white;
+          text-decoration: none;
+        }
+        
+      }
+      i{
+        margin-left: 50px;
+        width:30px;
+      }
+    }
+  }
+}
+
+.my-navbar{
+  background-color: $secondary-color;
+  h3{
+    display: inline;
+    font-size: large;
+  }
+  span{
+    float: right;
+    margin: 18px;
+    margin-right: 20px;
+    img{
+      width: 10px;;
+    }
+    a{
+      color: black;
+      &:hover{
+        color: gray;
+        text-decoration: none;
+      }
+    }
+  }
+}
+
+.content{
+  margin-left: 300px;
+  background-color: $background-color;
+}
+
+@media screen and (max-width: 600px) {
+  .sidebar{
+    margin: -300px;
+    height: auto;
+  }
+  .content{
+    margin: 0;
+  }
+}
+
+table{
+  thead{
+    th{
+      text-align: center;
+      padding: 5px;
+      padding-left: 1em;
+      padding-right: 1em;
+      border: 1px solid rgb(231, 231, 231);
+    }
+  }
+  tr{
+    td{
+
+    }
+  }
+}

@@ -1,0 +1,23 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  ordered_at: 2019-02-18 21:15:42
+  customer: one
+  product: one
+  size: one
+  no_of_items: 1
+  payment_method: MyString
+  status: MyString
+  delivery_location: MyString
+  delivered_at: 2019-02-18 21:15:42
+
+two:
+  ordered_at: 2019-02-18 21:15:42
+  customer: two
+  product: two
+  size: two
+  no_of_items: 1
+  payment_method: MyString
+  status: MyString
+  delivery_location: MyString
+  delivered_at: 2019-02-18 21:15:42
