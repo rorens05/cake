@@ -1,6 +1,12 @@
-<h1>Editing Category</h1>
 
-<%= render 'form', category: @category %>
+<div class="row my-row">
+  <div class='col-sm-12 my-container'> 
 
-<%= link_to 'Show', @category %> |
-<%= link_to 'Back', categories_path %>
+    <h1>Editing Category</h1>
+
+    <%= render 'form', category: @category %>
+
+    <%= link_to 'Show', @category %> |
+    <%= link_to 'Back', categories_path %>
+  </div>
+</div>

@@ -1,0 +1,33 @@
+cake features
+android
+-sign up
+-login logout
+-list of categories
+	-list of cakes
+		-details cake
+			-size
+			-color
+		-add to 
+-cart
+	-list of cake ordered
+	-payment method
+		-gcash
+		-cash on delivery
+	-checkout
+		if gcash
+			-notify admin
+			-admin will call the customer
+				-update status of transaction ongoing or declined, update order info
+			-gcash dashboard
+			
+		if COD
+			-notify admin
+			-admin will call the customer
+				-update status of transaction ongoing or declined
+			-down payment will be required
+-orders
+	-track orders
+	-status of order (processing, shipping, delivered)
+	-once delivered( delivery location, delivery date will be updated )
+
+

@@ -12,33 +12,48 @@
   <% end %>
 
   <div class="field">
+    <%= form.label :image %>
+    <%= form.file_field :image, required: true %>
+  </div>
+
+  <div class="field">
     <%= form.label :name %>
-    <%= form.text_field :name %>
+    <%= form.text_field :name, required: true %>
   </div>
 
   <div class="field">
     <%= form.label :address %>
-    <%= form.text_field :address %>
+    <%= form.text_field :address, required: true  %>
   </div>
 
   <div class="field">
     <%= form.label :contact_no %>
-    <%= form.text_field :contact_no %>
+    <%= form.text_field :contact_no, required: true  %>
   </div>
 
   <div class="field">
     <%= form.label :email %>
-    <%= form.text_field :email %>
+    <%= form.email_field :email, required: true %>
+  </div>
+
+  <div class="field">
+    <%= form.label :password %>
+    <%= form.password_field :password, required: true %>
+  </div>
+
+  <div class="field">
+    <%= form.label :password_confirmation %>
+    <%= form.password_field :password_confirmation, required: true %>
   </div>
 
   <div class="field">
     <%= form.label :gender %>
-    <%= form.text_field :gender %>
+    <%= form.select :gender, options_for_select(Customer::GENDERS, form.object.gender) %>
   </div>
 
   <div class="field">
     <%= form.label :status %>
-    <%= form.text_field :status %>
+    <%= form.select :status, options_for_select(Customer::STATUSES, form.object.status) %>
   </div>
 
   <div class="actions">

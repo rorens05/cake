@@ -2,41 +2,48 @@
 <div class="row my-row">
   <div class='col-sm-12 my-container'> 
         
-    <p id="notice"><%= notice %></p>
+    <div class="row">
+      <div class="col-sm-3">
+        <div class="product-show-image">
+          <%= image_tag validate_image(@customer.image) %>
+        </div>
+      </div>
+      <div class="col-sm-9">
+      
+        <h1>
+          <%= @customer.name %>
+        </h1><hr>
 
-    <p>
-      <strong>Name:</strong>
-      <%= @customer.name %>
-    </p>
+        <p>
+          <strong>Address:</strong>
+          <%= @customer.address %>
+        </p>
 
-    <p>
-      <strong>Address:</strong>
-      <%= @customer.address %>
-    </p>
+        <p>
+          <strong>Contact no:</strong>
+          <%= @customer.contact_no %>
+        </p>
 
-    <p>
-      <strong>Contact no:</strong>
-      <%= @customer.contact_no %>
-    </p>
+        <p>
+          <strong>Email:</strong>
+          <%= @customer.email %>
+        </p>
 
-    <p>
-      <strong>Email:</strong>
-      <%= @customer.email %>
-    </p>
+        <p>
+          <strong>Gender:</strong>
+          <%= @customer.gender %>
+        </p>
 
-    <p>
-      <strong>Gender:</strong>
-      <%= @customer.gender %>
-    </p>
+        <p>
+          <strong>Status:</strong>
+          <%= @customer.status %>
+        </p>
 
-    <p>
-      <strong>Status:</strong>
-      <%= @customer.status %>
-    </p>
+        <%= link_to 'Edit', edit_customer_path(@customer), class: "btn btn-info btn-sm" %>
+        <%= link_to 'Back', customers_path, class: "btn btn-secondary btn-sm" %>
 
-    <%= link_to 'Edit', edit_customer_path(@customer) %> |
-    <%= link_to 'Back', customers_path %>
 
-    
+      </div>
+    </div> 
   </div>
 </div>

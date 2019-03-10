@@ -9,10 +9,10 @@
     <table id="myTable" class="tablesorter">
       <thead>
         <tr>
+          <th>Image</th>
           <th>Name</th>
           <th>Category</th>
-          <th>Prices</th>
-          <th>Stock</th>
+          <th>Sizes</th>
           <th colspan="3"></th>
         </tr>
       </thead>
@@ -20,13 +20,21 @@
       <tbody>
         <% @products.each do |product| %>
           <tr>
-            <td><%= product.name %></td>
-            <td class="number-align"><%= product.category.name %></td>
-            <td class="number-align"><%=    %></td>
-            <td class="number-align"><%= product.stock %></td>
-            <td><%= link_to 'Show', product %></td>
-            <td><%= link_to 'Edit', edit_product_path(product) %></td>
-            <td><%= link_to 'Destroy', product, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+            <td><%= image_tag validate_image(product.image) %></td>
+            <td class="number-align"><%= link_to product.name, product %></td>
+            <td class="number-align"><%= link_to product.category.name, product.category %></td>
+            <td class="number-align">
+              <table class="size-table center">
+                <% product.sizes.order("price").each do |size| %>
+                  <tr>
+                    <td><%= size.label %></td>
+                    <td>₱ <%= size.price.round(2) %></td>
+                    <td><%= link_to "remove", size, method: :delete, data: { confirm: 'Are you sure?' }  %></td>
+                  </tr>
+                <% end %>
+              </table><br>
+            </td>
+            <td><%= link_to 'Delete', product, method: :delete, data: { confirm: 'Are you sure?' } %></td>
           </tr>
         <% end %>
       </tbody>
@@ -34,7 +42,7 @@
 
     <br>
 
-    <%= link_to 'New Product', new_product_path %>    
+    <%= link_to 'New Product', new_product_path, class: 'btn btn-primary' %>    
     
   </div>
 </div>

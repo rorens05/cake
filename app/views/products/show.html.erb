@@ -4,27 +4,56 @@
   <div class='col-sm-12 my-container'> 
     <p id="notice"><%= notice %></p>
 
-    <p>
-      <strong>Name:</strong>
-      <%= @product.name %>
-    </p>
 
-    <p>
-      <strong>Description:</strong>
-      <%= @product.description %>
-    </p>
+    <div class="row">
+      <div class="col-sm-3">
+        <div class="product-show-image">
+          <%= image_tag validate_image(@product.image) %>
+        </div>
+      </div>
+      <div class="col-sm-9">
+      
+        <h1>
+          <%= @product.name %>
+        </h1><hr>
 
-    <p>
-      <strong>Category:</strong>
-      <%= @product.category %>
-    </p>
+        <p>
+          <strong>Description:</strong>
+          <%= @product.description %>
+        </p>
 
-    <p>
-      <strong>Stock:</strong>
-      <%= @product.stock %>
-    </p>
+        <p>
+          <strong>Category:</strong>
+          <%= link_to @product.category.name, @product.category %>
+        </p>
 
-    <%= link_to 'Edit', edit_product_path(@product) %> |
-    <%= link_to 'Back', products_path %>    
+        <p>
+          <strong>Stock:</strong>
+          <%= @product.stock %>
+        </p>
+        
+        <table class="size-table">
+          <tr>
+            <th>Sizes</th>
+            <th>Price</th>
+            <th> </th>
+          </tr>
+          <% @product.sizes.order("price").each do |size| %>
+            <tr>
+              <td><%= size.label %></td>
+              <td>₱ <%= size.price.round(2) %></td>
+              <td><%= link_to "remove", size, method: :delete, data: { confirm: 'Are you sure?' }  %></td>
+
+            </tr>
+          <% end %>
+        </table><br>
+        
+        <%= render 'add_size' %>
+        <%= link_to 'Edit', edit_product_path(@product), class: "btn btn-info btn-sm" %>
+        <%= link_to 'Back', products_path, class: "btn btn-secondary btn-sm"  %>  
+
+      </div>
+    </div>
+  
   </div>
 </div>

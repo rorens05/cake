@@ -9,6 +9,7 @@
     <table id="myTable">
       <thead>
         <tr>
+          <th>Image</th>
           <th>Name</th>
           <th>Address</th>
           <th>Contact no</th>
@@ -22,15 +23,14 @@
       <tbody>
         <% @customers.each do |customer| %>
           <tr>
-            <td><%= customer.name %></td>
+            <td><%= image_tag validate_image(customer.image) %></td>
+            <td><%= link_to customer.name, customer %></td>
             <td><%= customer.address %></td>
             <td><%= customer.contact_no %></td>
             <td><%= customer.email %></td>
             <td><%= customer.gender %></td>
             <td><%= customer.status %></td>
-            <td><%= link_to 'Show', customer %></td>
-            <td><%= link_to 'Edit', edit_customer_path(customer) %></td>
-            <td><%= link_to 'Destroy', customer, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+            <td><%= link_to 'Delete', customer, method: :delete, data: { confirm: 'Are you sure?' } %></td>
           </tr>
         <% end %>
       </tbody>
@@ -38,7 +38,7 @@
 
     <br>
 
-    <%= link_to 'New Customer', new_customer_path %>    
+    <%= link_to 'New Customer', new_customer_path, class: 'btn btn-primary' %>    
     
   </div>
 </div> 

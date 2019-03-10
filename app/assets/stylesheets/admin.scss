@@ -1,4 +1,6 @@
 $primary-color : #ff6666;
+$primary-color-dark : #fd1b1b;
+$primary-color-light : #ddaaaa;
 $outline-btn : rgb(151, 151, 151);
 $secondary-color : #eedddd	;
 $background-color : rgb(226, 226, 226);
@@ -137,7 +139,13 @@ table{
     td{
       padding: 10px;
       padding-left: 1%;
-      border-bottom: 1px solid rgb(216, 216, 216);
+      border: 1px solid rgb(226, 226, 226);
+      img{
+        width: 80px;
+        height: 80px;
+        display: block;
+        margin: 0 auto;
+      }
       a{
         color: $primary-color !important;
       }
@@ -148,4 +156,25 @@ table{
 
 .number-align{
   text-align: center;
+}
+
+label{
+  display: block !important;
+}
+
+input[type="email"],input[type="text"],input[type="password"],input[type="number"], select{
+  width: 100%;
+  padding: 5px;
+  border: 1px solid rgb(192, 192, 192);
+}
+
+input[type="submit"]{
+  border: 1px solid $primary-color !important;
+  background-color: $primary-color-light;
+  border-radius: 3px;
+  padding: 5px;
+  color: #474747;
+}
+.center{
+  margin: 0 auto;
 }
