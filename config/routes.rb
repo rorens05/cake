@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  post 'custom_api/login'
+  post 'custom_api/create_user'
   delete 'access/logout'
   post 'access/attempt_login'
   get 'access/login'
