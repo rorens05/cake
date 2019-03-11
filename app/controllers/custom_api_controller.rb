@@ -39,4 +39,21 @@ class CustomApiController < ApplicationController
     end
 
   end
+
+  def get_categories
+    temps = Category.all
+    categories = []
+    temps.each do |temp|
+      category = temp.attributes
+      if temp.image.attachment
+        category[:image] = url_for(temp.image)
+      else
+        category[:image] = ""
+      end
+      categories << category
+    end
+    
+    render json: {status: 'success', message: 'Categories loaded', categories: categories}, status: :ok
+
+  end
 end
