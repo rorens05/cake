@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  get 'custom_api/get_cakes'
   get 'custom_api/get_categories'
   post 'custom_api/login'
   post 'custom_api/create_user'

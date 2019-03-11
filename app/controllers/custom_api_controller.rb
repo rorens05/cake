@@ -54,6 +54,23 @@ class CustomApiController < ApplicationController
     end
     
     render json: {status: 'success', message: 'Categories loaded', categories: categories}, status: :ok
+  end
+
+  def get_cakes
+    temps = Product.where(category_id: params[:id])
+    products = []
+    
+    temps.each do |temp|
+      product = temp.attributes
+      if temp.image.attachment
+        product[:image] = url_for(temp.image)
+      else
+        product[:image] = ""
+      end
+      products << product
+    end
+    render json: {status: 'success', message: 'Products loaded', categories: products}, status: :ok
 
   end
+
 end
