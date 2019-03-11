@@ -8,4 +8,11 @@ module ApplicationHelper
     
   end
   
+  def format_time(time)
+    if time
+      return time.strftime("%b %e, %Y")
+    else
+      return ""
+    end
+  end
 end

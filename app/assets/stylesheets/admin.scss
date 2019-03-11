@@ -178,3 +178,48 @@ input[type="submit"]{
 .center{
   margin: 0 auto;
 }
+
+#order_ordered_at_1i, #order_ordered_at_2i,
+#order_ordered_at_3i, #order_ordered_at_4i,
+#order_ordered_at_5i, #order_delivered_at_1i,
+#order_delivered_at_2i,#order_delivered_at_3i,
+#order_delivered_at_4i,#order_delivered_at_5i,
+{
+  width:100%;
+  max-width: 100px;
+  margin-bottom: 5px;
+}
+
+.order-status{
+
+  p{
+    margin-top: 3px !important;
+    margin-bottom: 0 !important;
+  }
+  select, textarea{
+    width: 200px !important;
+    margin-left: 20px;  
+    margin-bottom: 5px;
+  }
+  input{
+    margin-left: 20px;
+  }
+}
+
+.login{
+  max-width: 400px !important;
+  background-color: #ffcaca;
+  margin-top: 30px;
+  padding-top: 20px;
+  padding-bottom: 20px;
+  img{
+    display: block;
+    margin: 0 auto;
+  }
+  button{
+    width: 100%;
+  }
+}
+html{
+  background-color: white;
+}

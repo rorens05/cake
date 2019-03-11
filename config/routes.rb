@@ -1,6 +1,13 @@
 Rails.application.routes.draw do
-  resources :orders
-  resources :customers
+  delete 'access/logout'
+  post 'access/attempt_login'
+  get 'access/login'
+  resources :orders do
+    post :update_status, on: :member
+  end
+  resources :customers do
+    post :update_status, on: :member
+  end
   resources :sizes
   resources :products
   resources :categories

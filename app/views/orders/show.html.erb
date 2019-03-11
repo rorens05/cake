@@ -3,54 +3,75 @@
 <div class="row my-row">
   <div class='col-sm-12 my-container'> 
     <p id="notice"><%= notice %></p>
+    <div class="row">
+      <div class="col-sm-3">
+        <div class="product-show-image">
+          <%= image_tag validate_image(@order.product.image) %>
+        </div>
+      </div>
+      <div class="col-sm-9">
+      
+        <h1>
+          <%= @order.product.name %>
+        </h1><hr>
 
-    <p>
-      <strong>Ordered at:</strong>
-      <%= @order.ordered_at %>
-    </p>
+        <p>
+          <strong>Ordered at:</strong>
+          <%= format_time @order.ordered_at %>
+        </p>
 
-    <p>
-      <strong>Customer:</strong>
-      <%= @order.customer %>
-    </p>
+        <p>
+          <strong>Customer:</strong>
+          <%= link_to @order.customer.name, @order.customer %>
+        </p>
 
-    <p>
-      <strong>Product:</strong>
-      <%= @order.product %>
-    </p>
+        <p>
+          <strong>Product:</strong>
+          <%= link_to @order.product.name, @order.product %>
+        </p>
 
-    <p>
-      <strong>Size:</strong>
-      <%= @order.size %>
-    </p>
+        <p>
+          <strong>Size:</strong>
+          <%= link_to @order.size.label, @order.size %>
+        </p>
 
-    <p>
-      <strong>No of items:</strong>
-      <%= @order.no_of_items %>
-    </p>
+        <p>
+          <strong>Item Price:</strong>
+          <%= "₱ " + @order.size.price.to_s %>
+        </p>
 
-    <p>
-      <strong>Payment method:</strong>
-      <%= @order.payment_method %>
-    </p>
+        <p>
+          <strong>No of items:</strong>
+          <%= @order.no_of_items %>
+        </p>
 
-    <p>
-      <strong>Status:</strong>
-      <%= @order.status %>
-    </p>
+        <p>
+          <strong>Total Price:</strong>
 
-    <p>
-      <strong>Delivery location:</strong>
-      <%= @order.delivery_location %>
-    </p>
+          <%= "₱ " + (@order.size.price * @order.no_of_items).to_s %>
+        </p>
 
-    <p>
-      <strong>Delivered at:</strong>
-      <%= @order.delivered_at %>
-    </p>
+        <p>
+          <strong>Payment method:</strong>
+          <%= @order.payment_method %>
+        </p>
 
-    <%= link_to 'Edit', edit_order_path(@order) %> |
-    <%= link_to 'Back', orders_path %>    
-    
+        <p>
+          <strong>Status:</strong>
+          <%= form_tag update_status_order_path(@order), class: 'order-status' do %>
+            <%= select_tag :status, options_for_select(Order::STATUSES, @order.status) %> <br>
+            <p><strong>Note:</strong> </p>
+            <%= text_area_tag :note, @order.note %> <br>
+            
+            <%= submit_tag('Update Status', class: 'btn btn-primary btn-sm') %>
+          <% end %>
+        </p>
+
+
+        <%= link_to 'Edit', edit_order_path(@order), class: 'btn btn-info btn-sm'%>
+        <%= link_to 'Back', orders_path, class: 'btn btn-secondary btn-sm' %>  
+
+      </div>
+    </div> 
   </div>
 </div>

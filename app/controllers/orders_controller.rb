@@ -1,5 +1,5 @@
 class OrdersController < ApplicationController
-  before_action :set_order, only: [:show, :edit, :update, :destroy]
+  before_action :set_order, only: [:show, :edit, :update, :destroy, :update_status]
   layout 'admin'
 
   # GET /orders
@@ -16,16 +16,19 @@ class OrdersController < ApplicationController
   # GET /orders/new
   def new
     @order = Order.new
+    @sizes = Size.where('id < 0')
   end
 
   # GET /orders/1/edit
   def edit
+    @sizes = @order.product.sizes
   end
 
   # POST /orders
   # POST /orders.json
   def create
     @order = Order.new(order_params)
+    @order.status = "Pending"
 
     respond_to do |format|
       if @order.save
@@ -62,6 +65,14 @@ class OrdersController < ApplicationController
     end
   end
 
+  def update_status 
+    @order.status = params[:status]
+    @order.note = params[:note]
+    @order.save
+    flash[:notice] = 'Status updated'
+    redirect_to @order
+  end
+
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_order
@@ -70,6 +81,6 @@ class OrdersController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def order_params
-      params.require(:order).permit(:ordered_at, :customer_id, :product_id, :size_id, :no_of_items, :payment_method, :status, :delivery_location, :delivered_at)
+      params.require(:order).permit(:ordered_at, :customer_id, :product_id, :size_id, :no_of_items, :payment_method)
     end
 end

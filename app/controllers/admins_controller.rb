@@ -5,7 +5,7 @@ class AdminsController < ApplicationController
   # GET /admins
   # GET /admins.json
   def index
-    @admins = Admin.all
+    # @admins = Admin.all
   end
 
   # GET /admins/1
@@ -15,7 +15,7 @@ class AdminsController < ApplicationController
 
   # GET /admins/new
   def new
-    @admin = Admin.new
+    # @admin = Admin.new
   end
 
   # GET /admins/1/edit
@@ -25,17 +25,17 @@ class AdminsController < ApplicationController
   # POST /admins
   # POST /admins.json
   def create
-    @admin = Admin.new(admin_params)
+    # @admin = Admin.new(admin_params)
 
-    respond_to do |format|
-      if @admin.save
-        format.html { redirect_to @admin, notice: 'Admin was successfully created.' }
-        format.json { render :show, status: :created, location: @admin }
-      else
-        format.html { render :new }
-        format.json { render json: @admin.errors, status: :unprocessable_entity }
-      end
-    end
+    # respond_to do |format|
+    #   if @admin.save
+    #     format.html { redirect_to @admin, notice: 'Admin was successfully created.' }
+    #     format.json { render :show, status: :created, location: @admin }
+    #   else
+    #     format.html { render :new }
+    #     format.json { render json: @admin.errors, status: :unprocessable_entity }
+    #   end
+    # end
   end
 
   # PATCH/PUT /admins/1
@@ -55,11 +55,11 @@ class AdminsController < ApplicationController
   # DELETE /admins/1
   # DELETE /admins/1.json
   def destroy
-    @admin.destroy
-    respond_to do |format|
-      format.html { redirect_to admins_url, notice: 'Admin was successfully destroyed.' }
-      format.json { head :no_content }
-    end
+    # @admin.destroy
+    # respond_to do |format|
+    #   format.html { redirect_to admins_url, notice: 'Admin was successfully destroyed.' }
+    #   format.json { head :no_content }
+    # end
   end
 
   private
@@ -70,6 +70,6 @@ class AdminsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def admin_params
-      params.require(:admin).permit(:name, :username, :email, :password)
+      params.require(:admin).permit(:name, :username, :email, :password, :password_confirmation)
     end
 end

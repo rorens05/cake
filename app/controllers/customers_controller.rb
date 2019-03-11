@@ -1,5 +1,5 @@
 class CustomersController < ApplicationController
-  before_action :set_customer, only: [:show, :edit, :update, :destroy]
+  before_action :set_customer, only: [:show, :edit, :update, :destroy, :update_status]
   layout 'admin'
 
   # GET /customers
@@ -60,6 +60,13 @@ class CustomersController < ApplicationController
       format.html { redirect_to customers_url, notice: 'Customer was successfully destroyed.' }
       format.json { head :no_content }
     end
+  end
+
+  def update_status 
+    @customer.status = params[:status]
+    @customer.save
+    flash[:notice] = 'Status updated'
+    redirect_to @customer
   end
 
   private

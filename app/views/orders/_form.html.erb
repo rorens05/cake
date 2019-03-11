@@ -18,17 +18,17 @@
 
   <div class="field">
     <%= form.label :customer_id %>
-    <%= form.text_field :customer_id %>
+    <%= form.select :customer_id, options_from_collection_for_select(Customer.all, 'id', 'name', form.object.customer_id) %>
   </div>
 
   <div class="field">
     <%= form.label :product_id %>
-    <%= form.text_field :product_id %>
+    <%= form.select :product_id, options_from_collection_for_select(Product.all, 'id', 'name', form.object.product_id) %>
   </div>
-
-  <div class="field">
+  
+  <div class="field" id='sizeList'>
     <%= form.label :size_id %>
-    <%= form.text_field :size_id %>
+    <%= form.select :size_id, options_from_collection_for_select(@sizes, 'id', 'label', form.object.size_id) %>
   </div>
 
   <div class="field">
@@ -39,21 +39,6 @@
   <div class="field">
     <%= form.label :payment_method %>
     <%= form.text_field :payment_method %>
-  </div>
-
-  <div class="field">
-    <%= form.label :status %>
-    <%= form.text_field :status %>
-  </div>
-
-  <div class="field">
-    <%= form.label :delivery_location %>
-    <%= form.text_field :delivery_location %>
-  </div>
-
-  <div class="field">
-    <%= form.label :delivered_at %>
-    <%= form.datetime_select :delivered_at %>
   </div>
 
   <div class="actions">

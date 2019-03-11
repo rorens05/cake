@@ -9,8 +9,9 @@
         Welcome Admin
       </a>
       <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
-        <a class="dropdown-item" href="#">Profile</a>
-        <a class="dropdown-item" href="#">Logout</a>
+        <a class="dropdown-item" href="/admins/1">Profile</a>
+        <%= link_to 'Logout', access_logout_path, method: :delete, data: { confirm: 'Are you sure?' }, class: "dropdown-item" %>
+
       </div>
     </div>  
   </span>
