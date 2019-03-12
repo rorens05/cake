@@ -56,7 +56,7 @@ class CustomApiController < ApplicationController
     render json: {status: 'success', message: 'Categories loaded', categories: categories}, status: :ok
   end
 
-  def get_cakesm
+  def get_cakes
     temps = Product.where(category_id: params[:id])
     products = []
     
