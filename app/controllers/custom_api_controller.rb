@@ -73,4 +73,42 @@ class CustomApiController < ApplicationController
 
   end
 
+  def get_sizes
+    cake = Product.find(params[:id])
+    if cake
+      render json: {status: 'success', message: 'Sizes loaded', data: cake.sizes}, status: :ok
+    else
+      render json: {status: 'failed', message: 'Invalid id for cake'}, status: :ok
+    end
+  end
+
+  def create_cod_order
+    order = Order.new(ordered_at: Time.now, customer_id: params[:customer_id], size_id: params[:size_id], no_of_items: params[:items], payment_method: 'COD' )
+    order.product = Size.find(params[:size_id]).product
+    order.status = 'Pending'
+    if order.save
+      render json: {status: 'success', message: 'Sizes loaded', data: order}, status: :ok
+
+    else
+      render json: {status: 'failed', message: 'Error', data: order.errors.full_messages}, status: :ok
+
+    end
+  end
+
+  def get_orders
+    orders = Order.where(customer_id: params[:id])
+    data = []
+    
+    orders.each do |order|
+      
+      temp = order.attributes
+      temp[:image] = order.product.image.attachment ? url_for(order.product.image) : ""
+      temp[:product_name] = order.product.name
+      temp[:size_label] = order.size.label
+      temp[:size_price] = order.size.price
+      data << temp
+    end
+    
+    render json: {status: 'success', message: 'Sizes loaded', data: data}, status: :ok
+  end
 end

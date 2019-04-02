@@ -1,8 +1,11 @@
 Rails.application.routes.draw do
   get 'custom_api/get_cakes'
   get 'custom_api/get_categories'
+  get 'custom_api/get_sizes'
+  get 'custom_api/get_orders'
   post 'custom_api/login'
   post 'custom_api/create_user'
+  post 'custom_api/create_cod_order'
   delete 'access/logout'
   post 'access/attempt_login'
   get 'access/login'

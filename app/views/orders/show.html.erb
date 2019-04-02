@@ -32,12 +32,12 @@
 
         <p>
           <strong>Size:</strong>
-          <%= link_to @order.size.label, @order.size %>
+          <%= @order.size ? @order.size.label  : "no size" %>
         </p>
 
         <p>
           <strong>Item Price:</strong>
-          <%= "₱ " + @order.size.price.to_s %>
+          <%= @order.size ? "₱ " + @order.size.price.to_s : "0" %>
         </p>
 
         <p>
@@ -48,7 +48,7 @@
         <p>
           <strong>Total Price:</strong>
 
-          <%= "₱ " + (@order.size.price * @order.no_of_items).to_s %>
+          <%= @order.size ? "₱ " + (@order.size.price * @order.no_of_items).to_s : "0" %>
         </p>
 
         <p>
