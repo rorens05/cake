@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_03_10_202903) do
+ActiveRecord::Schema.define(version: 2019_05_13_003326) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -52,6 +52,21 @@ ActiveRecord::Schema.define(version: 2019_03_10_202903) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "custom_cake_orders", force: :cascade do |t|
+    t.string "theme"
+    t.string "size"
+    t.string "flavor"
+    t.string "color"
+    t.string "shape"
+    t.bigint "customer_id"
+    t.integer "quantity"
+    t.decimal "price"
+    t.string "payment_method"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["customer_id"], name: "index_custom_cake_orders_on_customer_id"
+  end
+
   create_table "customers", force: :cascade do |t|
     t.string "name"
     t.string "address"
@@ -77,6 +92,7 @@ ActiveRecord::Schema.define(version: 2019_03_10_202903) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.text "note"
+    t.boolean "cart", default: false
     t.index ["customer_id"], name: "index_orders_on_customer_id"
     t.index ["product_id"], name: "index_orders_on_product_id"
     t.index ["size_id"], name: "index_orders_on_size_id"
@@ -102,6 +118,7 @@ ActiveRecord::Schema.define(version: 2019_03_10_202903) do
   end
 
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
+  add_foreign_key "custom_cake_orders", "customers"
   add_foreign_key "orders", "customers"
   add_foreign_key "orders", "products"
   add_foreign_key "orders", "sizes"

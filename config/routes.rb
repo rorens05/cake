@@ -1,14 +1,22 @@
 Rails.application.routes.draw do
+  resources :custom_cake_orders
+  post 'custom_api/add_to_cart'
+  post 'custom_api/checkout_cart'
   get 'custom_api/get_cakes'
   get 'custom_api/get_categories'
   get 'custom_api/get_sizes'
   get 'custom_api/get_orders'
+  get 'custom_api/get_cart'
   post 'custom_api/login'
   post 'custom_api/create_user'
   post 'custom_api/create_cod_order'
+  post 'custom_api/signup'
+  post 'custom_api/change_password'
   delete 'access/logout'
   post 'access/attempt_login'
   get 'access/login'
+  get '/cart', to: 'orders#cart'
+
   resources :orders do
     post :update_status, on: :member
   end
