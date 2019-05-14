@@ -5,6 +5,7 @@ class CustomApiController < ApplicationController
 
   def checkout_cart
     cake = Order.find_by_id(params['id'])
+    cake.ordered_at = Date.today
     cake.cart = false
     cake.payment_method = "COD"
     if cake.save
@@ -13,6 +14,7 @@ class CustomApiController < ApplicationController
       render json: {status: "failed", error: cake.errors.full_messages}, status: :ok
     end
   end
+
   def add_to_cart
     customer_id = params["customer_id"]
     product_id = params["product_id"]

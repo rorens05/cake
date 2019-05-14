@@ -1,0 +1,45 @@
+<div class="row my-row">
+  <div class='col-sm-12 my-container'>
+  <h1>Calendar</h1> 
+    <div class="calendar-title">
+      <span class="month-title"><%= @date.strftime("%B %Y") %></span> 
+    </div>
+  
+    <table class="calendar-table">
+      <thead>
+        <tr>
+          <th>SUN</th>
+          <th>MON</th>
+          <th>TUE</th>
+          <th>WED</th>
+          <th>THU</th>
+          <th>FRI</th>
+          <th>SAT</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% counter = 1 %>
+        <% (@starting_day..@no_of_days).each do |item| %> 
+          <% if counter % 7 == 1 %><tr><% end %>
+            <td>
+              <% if item > 0 %>
+                <% if Order.where("ordered_at > ? ",  @date.change(day: item.to_i)).where("ordered_at < ? ",  @date.change(day: item.to_i).to_time.change(hour: 24)).count > 0 %>
+                  <a href="/orders?date=<%= @date.change(day: item.to_i).to_s %>">
+                    <%= item %>
+                  </a>
+                <% else %>  
+                  <%= item %> 
+                <% end %>
+              <% end %>
+            </td>
+          <% if counter % 7 == 0 %></tr><% end %>
+          <% counter = counter + 1%>
+        <% end %>
+      </tbody>
+    </table>
+    <div class="calendar-nav">
+      <span class="cn1"><a href="/calendar?date=<%= @date - 1.months %>">Previous month</a></span>
+      <span class="cn2"><a href="/calendar?date=<%= @date + 1.months %>">Next month</a></span>
+    </div>
+  </div>
+</div>

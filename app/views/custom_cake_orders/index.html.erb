@@ -10,14 +10,9 @@
       <thead>
         <tr>
           <th>Theme</th>
-          <th>Size</th>
-          <th>Flavor</th>
-          <th>Color</th>
-          <th>Shape</th>
           <th>Customer</th>
           <th>Quantity</th>
           <th>Price</th>
-          <th>Payment method</th>
           <th colspan="3"></th>
         </tr>
       </thead>
@@ -26,17 +21,11 @@
         <% @custom_cake_orders.each do |custom_cake_order| %>
           <tr>
             <td><%= custom_cake_order.theme %></td>
-            <td><%= custom_cake_order.size %></td>
-            <td><%= custom_cake_order.flavor %></td>
-            <td><%= custom_cake_order.color %></td>
-            <td><%= custom_cake_order.shape %></td>
-            <td><%= custom_cake_order.customer_id %></td>
+            <td><%= custom_cake_order.customer.name %></td>
             <td><%= custom_cake_order.quantity %></td>
             <td><%= custom_cake_order.price %></td>
-            <td><%= custom_cake_order.payment_method %></td>
             <td><%= link_to 'Show', custom_cake_order %></td>
-            <td><%= link_to 'Edit', edit_custom_cake_order_path(custom_cake_order) %></td>
-            <td><%= link_to 'Destroy', custom_cake_order, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+            <td><%= link_to 'Delete', custom_cake_order, method: :delete, data: { confirm: 'Are you sure?' } %></td>
           </tr>
         <% end %>
       </tbody>

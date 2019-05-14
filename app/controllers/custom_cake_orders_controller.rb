@@ -70,6 +70,6 @@ class CustomCakeOrdersController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def custom_cake_order_params
-      params.require(:custom_cake_order).permit(:theme, :size, :flavor, :color, :shape, :customer_id_id, :quantity, :price, :payment_method)
+      params.require(:custom_cake_order).permit(:theme, :size, :flavor, :color, :shape, :customer_id, :quantity, :price, :payment_method)
     end
 end

@@ -2,10 +2,31 @@ class OrdersController < ApplicationController
   before_action :set_order, only: [:show, :edit, :update, :destroy, :update_status]
   layout 'admin'
 
+  COMMON_YEAR_DAYS_IN_MONTH = [nil, 31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31]
+
+  def days_in_month(month, year = Time.now.year)
+     return 29 if month == 2 && Date.gregorian_leap?(year)
+     COMMON_YEAR_DAYS_IN_MONTH[month]
+  end
+
+  def calendar
+    @date = Date.today
+    if params[:date]
+      @date = Date.parse(params[:date])
+    end
+    @no_of_days = days_in_month(@date.month, @date.year)
+    @day_of_week = @date.strftime("%u").to_i
+    @starting_day = -@day_of_week
+  end
+
   # GET /orders
   # GET /orders.json
   def index
     @orders = Order.where(cart: false)
+    if params[:date]
+      @date = Date.parse(params[:date])
+      @orders = Order.where("ordered_at > ? ",  @date).where("ordered_at < ? ",  @date.to_time.change(hour: 24))
+    end
   end
 
   def cart

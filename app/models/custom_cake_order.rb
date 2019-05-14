@@ -1,3 +1,3 @@
 class CustomCakeOrder < ApplicationRecord
-  belongs_to :customer_id
+  belongs_to :customer
 end

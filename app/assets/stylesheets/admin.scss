@@ -225,3 +225,38 @@ input[type="submit"]{
 html{
   background-color: white;
 }
+
+.calendar-table{
+  width: 100%;
+  max-width: 1080px;
+  background-color: white;
+  margin: 10px auto;
+  
+  td{
+    text-align: center;
+    padding: 30px;
+    font-size: 30px;
+    font-weight: bold;
+  }
+}
+
+.calendar-title{
+    text-align: center;
+  .month-title{
+    font-size: 40px;
+    color: $primary-color;
+  }
+}
+
+.calendar-nav{
+  width: 100%;
+  max-width: 1080px;
+  margin: 10px auto;
+  .cn1{
+    float: left;
+  }
+  .cn2{
+    float: right;
+  }
+
+}

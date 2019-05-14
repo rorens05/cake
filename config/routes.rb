@@ -16,6 +16,7 @@ Rails.application.routes.draw do
   post 'access/attempt_login'
   get 'access/login'
   get '/cart', to: 'orders#cart'
+  get '/calendar', to: 'orders#calendar'
 
   resources :orders do
     post :update_status, on: :member
