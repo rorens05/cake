@@ -9,6 +9,7 @@
     <table>
       <thead>
         <tr>
+          <th>Image</th>
           <th>Theme</th>
           <th>Customer</th>
           <th>Quantity</th>
@@ -20,6 +21,7 @@
       <tbody>
         <% @custom_cake_orders.each do |custom_cake_order| %>
           <tr>
+            <td><%= image_tag validate_image(custom_cake_order.image)  %></td>
             <td><%= custom_cake_order.theme %></td>
             <td><%= custom_cake_order.customer.name %></td>
             <td><%= custom_cake_order.quantity %></td>

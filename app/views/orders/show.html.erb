@@ -21,6 +21,11 @@
         </p>
 
         <p>
+          <strong>Delivery location: </strong>
+          <%=  @order.delivery_location %>
+        </p>
+
+        <p>
           <strong>Customer:</strong>
           <%= link_to @order.customer.name, @order.customer %>
         </p>

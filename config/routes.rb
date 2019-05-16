@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
   resources :custom_cake_orders
+  post 'custom_api/add_custom_cake'
   post 'custom_api/add_to_cart'
   post 'custom_api/checkout_cart'
   get 'custom_api/get_cakes'

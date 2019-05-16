@@ -3,6 +3,28 @@ class CustomApiController < ApplicationController
   skip_before_action :verify_authenticity_token
   skip_before_action :authenticate_user
 
+  def add_custom_cake
+    custom = CustomCakeOrder.new
+    custom.theme = params["theme"]
+    custom.size = params["size"]
+    custom.flavor = params["flavor"]
+    custom.color = params["color"]
+    custom.shape = params["shape"]
+    custom.customer_id = params["customer_id"]
+    custom.quantity = params["quantity"]
+    custom.price = params["price"]
+    custom.layers = params["layers"]
+    custom.payment_method = "COD"
+    custom.image_json = params["image"]
+    custom.save_image
+
+    if(custom.save)
+      render json: {status: "success"}, status: :ok
+    else
+      render json: {status: "failed"}, status: :ok
+    end    
+  end
+
   def checkout_cart
     cake = Order.find_by_id(params['id'])
     cake.ordered_at = Date.today
@@ -20,6 +42,7 @@ class CustomApiController < ApplicationController
     product_id = params["product_id"]
     size_id = params["size_id"]
     no_of_items = params["no_of_items"]
+    delivery_location = params["delivery_location"]
 
     order = Order.new
     order.customer_id = customer_id
@@ -27,6 +50,7 @@ class CustomApiController < ApplicationController
     order.size_id = size_id
     order.no_of_items = no_of_items
     order.status = "Pending"
+    order.delivery_location = delivery_location
     order.cart = true
 
     if order.save
