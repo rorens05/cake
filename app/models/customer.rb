@@ -2,6 +2,8 @@ class Customer < ApplicationRecord
   has_one_attached :image
   has_secure_password
 
+  has_many :orders
+
   STATUSES = ['Pending', 'Confirmed']
   validates :status, :inclusion => { :in => STATUSES }
 

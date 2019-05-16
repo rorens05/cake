@@ -11,6 +11,8 @@ class CustomersController < ApplicationController
   # GET /customers/1
   # GET /customers/1.json
   def show
+    @orders = @customer.orders.where(cart: false)
+    @carts = @customer.orders.where(cart: true)
   end
 
   # GET /customers/new

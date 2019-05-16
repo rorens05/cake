@@ -45,6 +45,68 @@
           <% end %>
         </span>
       </div>
-    </div> 
+    </div> <hr>
+
+    <h1>Orders</h1>
+    <table  id="myTable">
+      <thead>
+        <tr>
+          <th>Ordered at</th>
+          <th>Customer</th>
+          <th>Product</th>
+          <th>Size</th>
+          <th>No of items</th>
+          <th>Price</th>
+          <th>Payment method</th>
+          <th>Status</th>
+          <th colspan="2"></th>
+        </tr>
+      </thead>
+
+      <tbody>
+        <% @orders.each do |order| %>
+          <tr>
+            <td><%= format_time(order.ordered_at) %></td>
+            <td><%= link_to order.customer.name, order.customer %></td>
+            <td><%= link_to order.product.name, order.product %></td>
+            <td><%= order.size ? order.size.label + " (₱#{order.size.price})" : "no size" %></td>
+            <td><%= order.no_of_items %></td>
+            <td><%= order.size ? "₱ " + (order.size.price * order.no_of_items).to_s : "0" %></td>
+            <td><%= order.payment_method %></td>
+            <td><%= order.status %></td>
+            <td><%= link_to 'Details', order %></td>
+            <td><%= link_to 'Delete', order, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+
+
+    <hr>
+    <h1>Cart</h1>
+
+    <table  id="myTable">
+      <thead>
+        <tr>
+          <th>Customer</th>
+          <th>Product</th>
+          <th>Size</th>
+          <th>No of items</th>
+          <th>Price</th>
+        </tr>
+      </thead>
+
+      <tbody>
+        <% @carts.each do |order| %>
+          <tr>
+            <td><%= link_to order.customer.name, order.customer %></td>
+            <td><%= link_to order.product.name, order.product %></td>
+            <td><%= order.size ? order.size.label + " (₱#{order.size.price})" : "no size" %></td>
+            <td><%= order.no_of_items %></td>
+            <td><%= order.size ? "₱ " + (order.size.price * order.no_of_items).to_s : "0" %></td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
   </div>
 </div>
