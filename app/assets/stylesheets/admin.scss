@@ -260,3 +260,25 @@ html{
   }
 
 }
+
+.search{
+  display: inline-block !important;
+  margin-left: 10px !important;
+  margin-top: 10px !important;
+  width: 600px;
+  input{
+    margin-top: -10px !important;
+    max-width: 500px !important;
+    width: 100% !important;
+  }
+  button{
+    margin-top: -10px !important;
+  }
+}
+
+.search-result{
+  a{
+    color: green !important;
+    font-size: large
+  }
+}

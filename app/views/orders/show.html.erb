@@ -26,6 +26,11 @@
         </p>
 
         <p>
+          <strong>Delivery Date: </strong>
+          <%= format_time @order.delivered_at %>
+        </p>
+
+        <p>
           <strong>Customer:</strong>
           <%= link_to @order.customer.name, @order.customer %>
         </p>

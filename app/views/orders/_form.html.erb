@@ -41,6 +41,16 @@
     <%= form.text_field :payment_method %>
   </div>
 
+  <div class="field">
+    <%= form.label :delivery_location %>
+    <%= form.text_field :delivery_location %>
+  </div>
+
+  <div class="field">
+    <%= form.label :delivered_at, "Delivered Date" %>
+    <%= form.datetime_select :delivered_at %>
+  </div>
+
   <div class="actions">
     <%= form.submit %>
   </div>

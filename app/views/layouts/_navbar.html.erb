@@ -3,8 +3,14 @@
     <%= render 'layouts/toggle_button' %>
     <%= controller_name.capitalize %>
   </h3>
+  
+  <form class="form-inline search" action="/search">
+      <input class="form-control mr-sm-2" type="search" placeholder="Search" name="search" aria-label="Search">
+      <button class="btn btn-danger my-2 my-sm-0" type="submit">Search</button>
+    </form>
   <span>
     <div class="dropdown show">
+      
       <a href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
         Welcome Admin
       </a>

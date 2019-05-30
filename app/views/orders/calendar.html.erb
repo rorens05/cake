@@ -23,7 +23,7 @@
           <% if counter % 7 == 1 %><tr><% end %>
             <td>
               <% if item > 0 %>
-                <% if Order.where("ordered_at > ? ",  @date.change(day: item.to_i)).where("ordered_at < ? ",  @date.change(day: item.to_i).to_time.change(hour: 24)).count > 0 %>
+                <% if Order.where("delivered_at > ? ",  @date.change(day: item.to_i)).where("delivered_at < ? ",  @date.change(day: item.to_i) + 1.days).count > 0 %>
                   <a href="/orders?date=<%= @date.change(day: item.to_i).to_s %>">
                     <%= item %>
                   </a>

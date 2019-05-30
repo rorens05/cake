@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  get '/search', to: 'search#search'
   resources :custom_cake_orders
   post 'custom_api/add_custom_cake'
   post 'custom_api/add_to_cart'

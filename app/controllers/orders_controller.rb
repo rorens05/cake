@@ -16,7 +16,7 @@ class OrdersController < ApplicationController
     end
     @no_of_days = days_in_month(@date.month, @date.year)
     @day_of_week = @date.strftime("%u").to_i
-    @starting_day = -@day_of_week
+    @starting_day = -@day_of_week + 2
   end
 
   # GET /orders
@@ -25,7 +25,7 @@ class OrdersController < ApplicationController
     @orders = Order.where(cart: false)
     if params[:date]
       @date = Date.parse(params[:date])
-      @orders = Order.where("ordered_at > ? ",  @date).where("ordered_at < ? ",  @date.to_time.change(hour: 24))
+      @orders = Order.where("delivered_at > ? ",  @date).where("delivered_at < ? ",  @date + 1.days)
     end
   end
 
@@ -105,6 +105,6 @@ class OrdersController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def order_params
-      params.require(:order).permit(:ordered_at, :customer_id, :product_id, :size_id, :no_of_items, :payment_method)
+      params.require(:order).permit(:ordered_at, :customer_id, :product_id, :size_id, :no_of_items, :payment_method, :delivered_at, :delivery_location)
     end
 end
