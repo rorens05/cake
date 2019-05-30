@@ -1,7 +1,7 @@
 <div class="row bg-white">
   <div class="col-12"> 
     <br>
-    About <%= @search_count %> results for <%= params[:search] %> 
+    About <%= @search_count %> results for "<%= params[:search] %>"
     <br><hr>
     <div class="search-result">
       <% @customers.each do |customer| %>
