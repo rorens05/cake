@@ -2,7 +2,10 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
-.product-show-image{
+.product-show-image{  
+  position: relative;
+  cursor: pointer;
+
   img{
     display: block;
     width: 100%;
@@ -12,9 +15,37 @@
 }
 
 .size-table{
-  max-width: 200px;
+  width: 100%;
+  max-width: 400px;
   th, td{
     padding: 3px !important;
     border: 1px solid #dddddd
   }
+}
+
+.image-zoom{
+  position: absolute;
+  left: 0;
+  top: 0;
+  z-index: 100;
+  background-color: rgba(0, 0, 0, 0.548);
+  width: 100%;
+  height: 100%;
+  img{
+    display: block;
+    margin: 40px auto;
+    width: calc(100%/1.5);
+    
+  }
+}
+
+.hidden{
+  display: none;
+}
+
+.product-image-hint{
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  text-align: center;
 }
