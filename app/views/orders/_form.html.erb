@@ -47,6 +47,11 @@
   </div>
 
   <div class="field">
+    <%= form.label :date_to_be_delivered %>
+    <%= form.datetime_select :delivered_at %>
+  </div>
+
+  <div class="field">
     <%= form.label :delivered_at, "Delivered Date" %>
     <%= form.datetime_select :delivered_at %>
   </div>

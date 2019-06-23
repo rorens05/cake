@@ -1,0 +1,78 @@
+<div class=container>
+  <form action="/reports" method="GET" class="print-option-form">
+    <h3>Sales Report</h3>
+    <a href="/reports?type=yearly">Yearly</a> |
+    <a href="/reports?type=monthly">Monthly</a> |
+    <a href="/reports?type=daily">Daily</a>
+    <div>
+      <% if @type == "monthly" %>
+        <input type="hidden" name="type" value="monthly">
+        <select name="month" id="month">
+          <option value="1">January</option>
+          <option value="2">Febuary</option>
+          <option value="3">March</option>
+          <option value="4">April</option>
+          <option value="5">May</option>
+          <option value="6">June</option>
+          <option value="7">July</option>
+          <option value="8">August</option>
+          <option value="9">September</option>
+          <option value="10">October</option>
+          <option value="11">November</option>
+          <option value="12">December</option>
+        </select>
+      <% end %>
+
+      <% if @type == "yearly" %>
+        <input type="hidden" name="type" value="yearly">
+        <select name="year" id="year">
+          <option value="2016">2016</option>
+          <option value="2017">2017</option>
+          <option value="2018">2018</option>
+          <option value="2019">2019</option>
+        </select>
+      <% end %>
+
+      <% if @type == "daily" %>
+        <input type="hidden" name="type" value="daily">
+        <input type="date" name="date" value=<%= Date.today %>>
+      <% end %>
+    </div>
+    <button class="btn btn-danger my-2 my-sm-0">submit</button>
+  </form><br>
+  
+  <div class="paper">   
+    <h3><%= @type_name %> Sales Report</h3> 
+    <h5>Date: <%= format_time Date.today %></h5>
+    <table class="report-table">
+      <thead>
+        <tr>
+          <th>Date Ordered</th>
+          <th>Date Delivered</th>
+          <th>Customer</th>
+          <th>Product</th>
+          <th>Size</th>
+          <th>Number of Items</th>
+          <th>Total Price</th>
+          <th>Payment Method</th>
+        </tr>
+      </thead>
+      <tbody>
+        
+        <% @orders.each do |order| %>
+          <tr>
+            <td><%= format_time order.ordered_at %></td>
+            <td><%= format_time order.delivered_at %></td>
+            <td><%= order.customer.name %></td>
+            <td><%= order.product.name %></td>
+            <td><%= order.size.label %></td>
+            <td><%= order.no_of_items %></td>
+            <td><%= order.no_of_items * order.size.price %></td>
+            <td><%= order.payment_method %></td>
+          </tr>
+        <% end %>
+        
+      </tbody>
+    </table>
+  </div>
+</div>
