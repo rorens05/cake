@@ -146,7 +146,7 @@ class CustomApiController < ApplicationController
     if order.save
       render json: {status: 'success', message: 'Sizes loaded', data: order}, status: :ok
 
-    else
+    else 
       render json: {status: 'failed', message: 'Error', data: order.errors.full_messages}, status: :ok
 
     end
