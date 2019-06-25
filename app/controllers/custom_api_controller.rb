@@ -140,7 +140,7 @@ class CustomApiController < ApplicationController
   end
 
   def create_cod_order
-    order = Order.new(ordered_at: Time.now, customer_id: params[:customer_id], size_id: params[:size_id], no_of_items: params[:items], payment_method: params[:payment_method] )
+    order = Order.new(ordered_at: Time.now, customer_id: params[:customer_id], size_id: params[:size_id], no_of_items: params[:items], payment_method: params[:payment_method], delivery_location: params['delivery_location'] )
     order.product = Size.find(params[:size_id]).product
     order.status = 'Pending'
     if order.save
