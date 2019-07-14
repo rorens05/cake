@@ -29,7 +29,7 @@ class CustomApiController < ApplicationController
     cake = Order.find_by_id(params['id'])
     cake.ordered_at = Date.today
     cake.cart = false
-    cake.payment_method = "COD"
+    cake.payment_method = params['payment_method'] 
     if cake.save
       render json: {status: "success"}, status: :ok
     else

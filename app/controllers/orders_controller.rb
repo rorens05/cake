@@ -7,7 +7,7 @@ class OrdersController < ApplicationController
   def days_in_month(month, year = Time.now.year)
      return 29 if month == 2 && Date.gregorian_leap?(year)
      COMMON_YEAR_DAYS_IN_MONTH[month]
-  end
+  end 
 
   def calendar
     @date = Date.today
@@ -25,7 +25,7 @@ class OrdersController < ApplicationController
     @orders = Order.where(cart: false)
     if params[:date]
       @date = Date.parse(params[:date])
-      @orders = Order.where("delivered_at > ? ",  @date).where("delivered_at < ? ",  @date + 1.days)
+      @orders = Order.where("delivered_at >= ? ",  @date).where("delivered_at < ? ",  @date + 1.days)
     end
   end
 
@@ -90,8 +90,11 @@ class OrdersController < ApplicationController
   end
 
   def update_status 
-    @order.status = params[:status]
+    @order.status = params[:status] 
     @order.note = params[:note]
+    if @order.status == "Delivered" || @order.status == "Aproved" 
+      @order.delivered_at = Date.today
+    end
     @order.save
     flash[:notice] = 'Status updated'
     redirect_to @order
