@@ -72,6 +72,16 @@
         </p>
 
         <p>
+          <strong>Control Number:</strong>
+          <%= @order.control_number %>
+        </p>
+
+        <p>
+          <strong>Sender:</strong>
+          <%= @order.sender %>
+        </p>
+
+        <p>
           <strong>Status:</strong>
           <%= form_tag update_status_order_path(@order), class: 'order-status' do %>
             <%= select_tag :status, options_for_select(Order::STATUSES, @order.status) %> <br>

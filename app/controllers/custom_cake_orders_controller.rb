@@ -1,5 +1,16 @@
 class CustomCakeOrdersController < ApplicationController
-  before_action :set_custom_cake_order, only: [:show, :edit, :update, :destroy]
+  before_action :set_custom_cake_order, only: [:show, :edit, :update, :destroy, :update_status]
+
+
+  def update_status
+    @custom_cake_order.status = params[:status] 
+    if @custom_cake_order.status == "Delivered" || @order.status == "Aproved" 
+      @custom_cake_order.delivered_at = Date.today
+    end
+    @custom_cake_order.save
+    flash[:notice] = 'Status updated'
+    redirect_to @custom_cake_order
+  end
 
   layout 'admin'
   # GET /custom_cake_orders

@@ -1,6 +1,9 @@
 Rails.application.routes.draw do
   get '/search', to: 'search#search'
-  resources :custom_cake_orders
+  resources :custom_cake_orders do
+    post :update_status, on: :member
+  end
+  post 'custom_api/update_control'
   post 'custom_api/add_custom_cake'
   post 'custom_api/add_to_cart'
   post 'custom_api/checkout_cart'

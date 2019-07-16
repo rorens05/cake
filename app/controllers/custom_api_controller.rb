@@ -3,6 +3,18 @@ class CustomApiController < ApplicationController
   skip_before_action :verify_authenticity_token
   skip_before_action :authenticate_user
 
+  def update_control
+    @order = Order.find(params["id"])
+    @order.sender = params["sender"]
+    @order.control_number = params["control"]
+    @order.save
+    if(@order.save)
+      render json: {status: "success"}, status: :ok
+    else
+      render json: {status: "failed"}, status: :ok
+    end  
+  end
+
   def add_custom_cake
     custom = CustomCakeOrder.new
     custom.theme = params["theme"]
@@ -140,6 +152,7 @@ class CustomApiController < ApplicationController
   end
 
   def create_cod_order
+
     order = Order.new(ordered_at: Time.now,
      customer_id: params[:customer_id], 
      size_id: params[:size_id], 
@@ -156,7 +169,6 @@ class CustomApiController < ApplicationController
 
     else 
       render json: {status: 'failed', message: 'Error', data: order.errors.full_messages}, status: :ok
-
     end
   end
 
@@ -165,7 +177,6 @@ class CustomApiController < ApplicationController
     data = []
     
     orders.each do |order|
-      
       temp = order.attributes
       temp[:image] = order.product.image.attachment ? url_for(order.product.image) : ""
       temp[:product_name] = order.product.name
@@ -173,6 +184,27 @@ class CustomApiController < ApplicationController
       temp[:size_price] = order.size.price
       data << temp
     end
+
+    customs = CustomCakeOrder.where(customer_id: params[:id])
+    customs.each do |order|
+      temp = order.attributes
+      temp[:image] = order.image.attachment ? url_for(order.image) : ""
+      temp[:product_name] = order.theme
+      temp[:size_label] = order.size
+      temp[:size_price] = order.price
+      temp[:no_of_items] = order.quantity
+      temp[:ordered_at] = order.created_at
+      temp[:product_id] = 0 
+      temp[:size_id] = 0 
+      temp[:delivery_location] = "lingayen"
+      temp[:note] = "note"
+      temp[:cart] = "false"
+      temp[:date_to_be_delivered] = "false"
+      temp[:control_number] = "false"
+      temp[:sender] = "false"
+      data << temp
+    end
+
     
     render json: {status: 'success', message: 'Sizes loaded', data: data}, status: :ok
   end

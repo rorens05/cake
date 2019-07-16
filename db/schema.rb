@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_06_25_223815) do
+ActiveRecord::Schema.define(version: 2019_07_16_221912) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -65,6 +65,8 @@ ActiveRecord::Schema.define(version: 2019_06_25_223815) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.integer "layers"
+    t.string "status"
+    t.datetime "delivered_at"
     t.index ["customer_id"], name: "index_custom_cake_orders_on_customer_id"
   end
 
@@ -95,6 +97,8 @@ ActiveRecord::Schema.define(version: 2019_06_25_223815) do
     t.text "note"
     t.boolean "cart", default: false
     t.string "date_to_be_delivered"
+    t.string "control_number"
+    t.string "sender"
     t.index ["customer_id"], name: "index_orders_on_customer_id"
     t.index ["product_id"], name: "index_orders_on_product_id"
     t.index ["size_id"], name: "index_orders_on_size_id"

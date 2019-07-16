@@ -1,56 +1,82 @@
-
+<div class="image-zoom hidden">
+  <%= image_tag validate_image(@custom_cake_order.image) %>
+</div>
 <div class="row my-row">
   <div class='col-sm-12 my-container'> 
       
     <p id="notice"><%= notice %></p>
-
-    <p>
-      <strong>Theme:</strong>
-      <%= @custom_cake_order.theme %>
-    </p>
-
-    <p>
-      <strong>Size:</strong>
-      <%= @custom_cake_order.size %>
-    </p>
-
-    <p>
-      <strong>Flavor:</strong>
-      <%= @custom_cake_order.flavor %>
-    </p>
-
-    <p>
-      <strong>Color:</strong>
-      <%= @custom_cake_order.color %>
-    </p>
-
-    <p>
-      <strong>Shape:</strong>
-      <%= @custom_cake_order.shape %>
-    </p>
+    <div class="row">
+      <div class="col-sm-3">
+        <div class="product-show-image">
+          <%= image_tag validate_image(@custom_cake_order.image) %>
+          <div class="product-image-hint">Click to zoom</div>
+        </div>
+      </div>
     
-    <p>
-      <strong>Customer:</strong>
-      <%= @custom_cake_order.customer_id %>
-    </p>
+      <div class="col-sm-3 pt-3">
+         <p>
+          <strong>Theme:</strong>
+          <%= @custom_cake_order.theme %>
+        </p>
 
-  <p>
-      <strong>Quantity:</strong>
-      <%= @custom_cake_order.quantity %>
-    </p>
+        <p>
+          <strong>Size:</strong>
+          <%= @custom_cake_order.size %>
+        </p>
 
-    <p>
-      <strong>Price:</strong>
-      <%= @custom_cake_order.price %>
-    </p>
+        <p>
+          <strong>Flavor:</strong>
+          <%= @custom_cake_order.flavor %>
+        </p>
 
-    <p>
-      <strong>Payment method:</strong>
-      <%= @custom_cake_order.payment_method %>
-    </p>
+        <p>
+          <strong>Color:</strong>
+          <%= @custom_cake_order.color %>
+        </p>
 
-    <%= link_to 'Edit', edit_custom_cake_order_path(@custom_cake_order) %> |
-    <%= link_to 'Back', custom_cake_orders_path %>
+        <p>
+          <strong>Shape:</strong>
+          <%= @custom_cake_order.shape %>
+        </p>
+        
+        <p>
+          <strong>Customer:</strong>
+          <%= @custom_cake_order.customer.name %>
+        </p>
+
+      <p>
+          <strong>Quantity:</strong>
+          <%= @custom_cake_order.quantity %>
+        </p>
+
+        <p>
+          <strong>Price:</strong>
+          <%= @custom_cake_order.price %>
+        </p>
+
+        <p>
+          <strong>Payment method:</strong>
+          <%= @custom_cake_order.payment_method %>
+        </p>
+        <p>
+          <strong>Status:</strong>
+          <%= @custom_cake_order.status %>
+        </p>
+        <p>
+          <strong>Delivered At:</strong>
+          <%= format_time(@custom_cake_order.delivered_at) %>
+        </p>
+
+        <%= form_tag update_status_custom_cake_order_path(@custom_cake_order), class: 'order-status' do %>
+            <%= select_tag :status, options_for_select(Order::STATUSES, @custom_cake_order.status) %> <br>
+            
+            <%= submit_tag('Update Status', class: 'btn btn-primary btn-sm') %>
+          <% end %>
+        <%= link_to 'Edit', edit_custom_cake_order_path(@custom_cake_order) %> |
+        <%= link_to 'Back', custom_cake_orders_path %>
+
+      </div>
+    </div>
 
   </div>
 </div>
