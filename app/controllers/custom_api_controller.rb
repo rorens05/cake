@@ -197,7 +197,7 @@ class CustomApiController < ApplicationController
       temp[:product_id] = 0 
       temp[:size_id] = 0 
       temp[:delivery_location] = "lingayen"
-      temp[:note] = "note"
+      temp[:note] = ""
       temp[:cart] = "false"
       temp[:date_to_be_delivered] = "false"
       temp[:control_number] = "false"
