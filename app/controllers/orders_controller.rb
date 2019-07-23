@@ -25,7 +25,7 @@ class OrdersController < ApplicationController
     @orders = Order.where(cart: false)
     if params[:date]
       @date = Date.parse(params[:date])
-      @orders = Order.where("date_to_be_delivered = ? ",  @date.strftime("%Y-%m-%d"))
+      @orders = Order.where("date_to_be_delivered = ? ",  @date.strftime("%m-%d-%Y"))
     end
   end
 
