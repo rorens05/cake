@@ -24,7 +24,7 @@
             <td>
               <% if item > 0 %>
                 <%# if Order.where("delivered_at >= ? ",  @date.change(day: item.to_i)).where("delivered_at < ? ",  @date.change(day: item.to_i) + 1.days).count > 0 %>
-                <% if Order.where("date_to_be_delivered = ? ",  @date.change(day: item.to_i).strftime("%m-%d-%Y")).count > 0 %>
+                <% if Order.where("date_to_be_delivered = ? ",  @date.change(day: item.to_i).strftime("%-m-%-d-%Y")).count > 0 %>
                   <a href="/orders?date=<%= @date.change(day: item.to_i).to_s %>">
                     <%= item %>
                   </a>
